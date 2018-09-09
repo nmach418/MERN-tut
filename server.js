@@ -14,14 +14,21 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 
 // Connect to Mongo
-mongoose.connect(db)
+mongoose
+    .connect(db)
     .then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err));
+
+
+    // {useNewUrlParser: true}, (err, res) => {
+    //     if (err) throw err;
+    //     console.log('Database online');
+
 
 // Use Routes
 app.use('/api/items', items);
 
 const port = process.env.PORT || 5000;
     
-app.listen(port, () => console.log(`Server started on ${port}`));
+app.listen(port, () => console.log(`Server started on crazy port ${port}`));
 
